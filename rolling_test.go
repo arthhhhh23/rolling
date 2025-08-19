@@ -292,6 +292,16 @@ func TestFuzz(t *testing.T) {
 	}
 }
 
+func TestEvictAllAndAddAgain(t *testing.T) {
+	w := NewWindow(3, time.Millisecond*100)
+	w.AddAt(rand.Float64(), time.Now().Add(-time.Hour))
+	w.Evict()
+	w.Add(10.0)
+	if w.Sum() != 10.0 {
+		t.Errorf("expected sum 10, but got %f", w.Sum())
+	}
+}
+
 func TestEvictAddAtOutOfOrder(t *testing.T) {
 	w := NewWindow(100, time.Millisecond*100)
 	before := runtime.MemStats{}

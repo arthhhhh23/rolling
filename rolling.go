@@ -110,7 +110,12 @@ func (w *Window) AddAt(value float64, at time.Time) {
 	}
 
 	w.cnt++
-	w.sum += value
+
+	if w.cnt == 1 {
+		w.sum = value
+	} else {
+		w.sum += value
+	}
 
 	// Remove head if window is full.
 	if w.cnt > w.maxSize {
