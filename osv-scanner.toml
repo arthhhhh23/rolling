@@ -6,3 +6,6 @@ reason = "not applicable"
 id = "GO-2023-2186"
 reason = "not applicable"
 
+[[IgnoredVulns]]
+id = "GO-2025-3750"
+reason = "not applicable"
