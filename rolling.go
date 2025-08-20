@@ -110,12 +110,7 @@ func (w *Window) AddAt(value float64, at time.Time) {
 	}
 
 	w.cnt++
-
-	if w.cnt == 1 {
-		w.sum = value
-	} else {
-		w.sum += value
-	}
+	w.sum += value
 
 	// Remove head if window is full.
 	if w.cnt > w.maxSize {
@@ -162,7 +157,7 @@ func (w *Window) Evict() {
 	}
 
 	if w.cnt == 0 {
-		w.sum = math.NaN()
+		w.sum = 0
 		w.min = math.MaxFloat64
 		w.max = -math.MaxFloat64
 	}
